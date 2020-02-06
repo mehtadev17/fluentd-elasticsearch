@@ -15,23 +15,7 @@ Fluentd docker image with elasticsearch plugin
 * Mount fluentd configuration files at /fluentd/etc/ on container
 
 
-## docker-compose.yml example
+## docker-compose
 ```
-
-elasticsearch:
-  image: elasticsearch:6.8.6
-  expose:
-    - 9200
-  ports:
-    - "9200:9200"
-
-fluentd:
-  image: fluentd-elasticsearch:latest
-  volumes:
-    - ./fluentd:/fluentd/etc # must have directory fluentd and conf file within ie fluentd/fluent.conf
-  depends_on:
-    - elasticsearch
-  ports:
-    - "24224:24224"
-    - "24224:24224/udp"
+docker-compose up
 ```
