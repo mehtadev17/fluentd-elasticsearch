@@ -1,0 +1,18 @@
+version: '3'
+services:
+    elasticsearch:
+        image: elasticsearch:6.8.6
+        expose:
+            - 9200
+        ports:
+            - "9200:9200"
+
+    fluentd:
+        build: .
+        volumes:
+            - ./fluentd:/fluentd/etc # must have directory fluentd and conf file within ie fluentd/fluent.conf
+        depends_on:
+            - elasticsearch
+        ports:
+            - "24224:24224"
+            - "24224:24224/udp"
